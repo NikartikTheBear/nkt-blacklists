@@ -1,7 +1,8 @@
 Config = {}
 
-Config.VehBlacklist = true
-Config.Vehs = {
+Config.Timer = 3000 --time between checks, no need for very low values
+Config.VehBlacklist = true --use the vehicle blacklist
+Config.Vehs = { --vehicles model to blacklist
     "vigilante",
     "hydra",
     "buzzard",
@@ -32,4 +33,4 @@ Config.PedsBlacklist = true
 Config.Peds = {
 }
 
-Config.DisablePickups = true
+Config.DisablePickups = true -- enable/disable pickups deletion
