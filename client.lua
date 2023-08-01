@@ -1,62 +1,46 @@
-local vehs = {
-    "vigilante",
-    "hydra",
-    "buzzard",
-    "deluxo",
-    "avenger",
-    "akula",
-    "apc",
-    "barrage",
-    "caracara",
-    "cargobob",
-    "chernobog",
-    "hunter",
-    "insurgent",
-    "starling",
-    "lazer",
-    "bombushka",
-    "savage",
-    "rhino",
-    "khanjali"
-}
-local props = {
-    "prop_cs_burger_01"
-}
-local peds = {
-
-}
 CreateThread(function()
     while true do
         Wait(2000)
-        local objectPool = GetGamePool('CObject')
+            
+        if Config.VehBlacklist then
         local vehiclePool = GetGamePool('CVehicle')
-        local pickupPool = GetGamePool('CPickup')
-        local pedsPool = GetGamePool('CPed')
+            for i = 1, #vehiclePool do
+                for j = 1, #Config.Vehs, 1 do
+                    local hash = GetHashKey(Config.Vehs[j])
+                    if GetEntityModel(hash) then
+                        DeleteEntity(vehiclePool[i]) 
+                    end
+                end
+            end
+        end
 
-        for i = 1, #vehiclePool do
-            for j = 1, #vehs, 1 do
-                local hash = GetHashKey(vehs[j])
-                if GetEntityModel(hash) then
-                    DeleteEntity(vehiclePool[i]) 
+        if Config.PropsBlacklist then
+        local objectPool = GetGamePool('CObject')
+            for i=1, #objectPool do
+                for j = 1, #Config.Props, 1 do
+                    local hash = GetHashKey(Config.Props[j])
+                    if GetEntityModel(hash) then
+                        DeleteEntity(objectPool[i]) 
+                    end
                 end
             end
         end
-        for i=1, #objectPool do
-            for j = 1, #props, 1 do
-                local hash = GetHashKey(props[j])
-                if GetEntityModel(hash) then
-                    DeleteEntity(objectPool[i]) 
-                end
+
+        if Config.DisablePickups then
+        local pickupPool = GetGamePool('CPickup')
+            for i=1, #pickupPool do
+                DeleteEntity(pickupPool[i]) 
             end
         end
-        for i=1, #pickupPool do
-            DeleteEntity(objectPool[i]) 
-        end
-        for i = 1, #pedsPool do
-            for j = 1, #peds, 1 do
-                local hash = GetHashKey(peds[j])
-                if GetEntityModel(hash) then
-                    DeleteEntity(pedsPool[i]) 
+
+        if Config.PedsBlacklist then
+        local pedsPool = GetGamePool('CPed')       
+            for i = 1, #pedsPool do
+                for j = 1, #Config.Peds, 1 do
+                    local hash = GetHashKey(Config.Peds[j])
+                    if GetEntityModel(hash) then
+                        DeleteEntity(pedsPool[i]) 
+                    end
                 end
             end
         end
