@@ -1,6 +1,6 @@
 CreateThread(function()
     while true do
-        Wait(2000)
+        Wait(Config.Timer)
             
         if Config.VehBlacklist then
         local vehiclePool = GetGamePool('CVehicle')
