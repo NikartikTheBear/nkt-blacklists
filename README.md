@@ -1,5 +1,5 @@
 # nkt-blacklistvehs
-a very simple method to blacklist vehicles
+a very simple method to blacklist vehicles, peds, props and removing pickups
 
-i saw all kind of methods but nothing simple and effective so i made one myself for everyone to use
-just define your desired vehicle blacklist and you're good to go!
+i saw all kind of methods with complicated enumerators but nothing simple so i made one myself for everyone to use, it may not be perfect but you're more than welcome to improve it.
+just define your desired blacklist options and you're good to go!
